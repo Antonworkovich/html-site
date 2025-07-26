@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Yo-Yo-Yoga/title>
+<title>Yo-Yo-Yoga</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="icon" type="image/png" href="Pictures/Yoga-head-picture.png">
+<!-- <link rel="icon" type="image/png" href="Pictures/Yoga-head-picture.png"> 
+<link rel="icon" type="image/svg+xml" href="Pictures/Yoga-icon-2.svg"> -->
+<link rel="icon" type="image/png" href="Pictures/Yoga-head-picture-2.png">
+<!-- Material Symbols (Google) -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<!-- Iconify for buttocks icon -->
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
@@ -65,6 +71,37 @@ body, html {
     padding: 10px 4px !important;
   }
 }
+
+.about-bg-parallax {
+  background-image: url('large_article_vrksasana-baum-yogaeasy-xenia-bluhm-header.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px; /* збільшено ширину */
+  margin: 0 auto;
+  padding: 64px 32px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+}
+@media (max-width: 900px) {
+  .about-content {
+    padding: 32px 8px;
+    max-width: 98vw;
+  }
+}
 </style>
 </head>
 <body>
@@ -94,56 +131,60 @@ body, html {
 </div>
 
 <!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+<div class="bgimg-1 w3-display-container" id="home">
   <div class="w3-display-middle" style="white-space:nowrap; display: flex; flex-direction: column; align-items: center;">
-    <img src="large_article_vrksasana-baum-yogaeasy-xenia-bluhm-header.jpg" alt="Yoga" id="logo-img" style="width: 180px; border-radius: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 1rem; transition: transform 0.4s cubic-bezier(.4,2,.6,1);">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">Оленка йога</span>
+    <span class="w3-center w3-padding-large w3-xlarge w3-wide w3-animate-opacity" 
+          style="
+            border-radius: 2rem;
+            background: rgba(255,255,255,0.55);
+            color: #222;
+            font-weight: bold;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            backdrop-filter: blur(2px);
+            padding: 1.2rem 2.5rem;
+            letter-spacing: 0.2em;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.08);
+          ">
+      Olenka's Yoga
+    </span>
   </div>
 </div>
-<script>
-  const logoImg = document.getElementById('logo-img');
-  if (logoImg) {
-    logoImg.addEventListener('mouseenter', () => {
-      logoImg.style.transform = 'rotateY(18deg) scale(1.07)';
-    });
-    logoImg.addEventListener('mouseleave', () => {
-      logoImg.style.transform = 'rotateY(0deg) scale(1)';
-    });
-  }
-</script>
 
 <!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
-  <h3 class="w3-center">ABOUT ME</h3>
-  <p class="w3-center"><em>I love photography</em></p>
-  <p>We have created a fictional "personal" website/blog, and our fictional character is a hobby photographer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-    qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <div class="w3-row">
-    <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i>My Name</b></p><br>
-      <img src="/w3images/avatar_hat.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
+<div class="about-bg-parallax" id="about">
+  <div class="about-content">
+    <h3 class="w3-center">Про мене</h3>
+    <p class="w3-center"><em>I love photography</em></p>
+    <p>Я - Оленка, викладачка йоги в чудовому місті Бремен. Колись я вирушила до Індії шукати себе, а знайшла ще й дзен (і кілька дуже милих мавпочок). Вивчаю людину не лише ззовні, а й зсередини: тіло, душа, настрій, навіть почуття гумору — усе важливо! </p>
+    <div class="w3-row">
+      <div class="w3-col m6 w3-center w3-padding-large">
+        <p><b><i class="fa fa-user w3-margin-right"></i>Olenka Zagorodniuk</b></p><br>
+        <img src="Pictures/Olenka.jpg" class="w3-round w3-image" alt="Olenka Yoga" style="width:80%;max-width:320px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.12);">
+       <!-- <img src="Pictures/Olenka.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333"> -->
+      </div>
+      <div class="w3-col m6 w3-hide-small w3-padding-large">
+        <p>Допомагаю кожному знайти гармонію, розвиватися і відчувати справжнє душевне тепло (і трохи розтягнутися, звісно). Люблю, коли заняття проходять із посмішкою, а клієнти йдуть додому не лише гнучкішими, а й щасливішими. Приходьте — разом буде веселіше, тепліше і… трохи дзеновіше!</p>
+      </div>
     </div>
-
-    <!-- Hide this text on small devices -->
-    <div class="w3-col m6 w3-hide-small w3-padding-large">
-      <p>Welcome to my website. I am lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p class="w3-large w3-center w3-padding-16">Im really good at:</p>
+    <p class="w3-wide">
+      <span class="material-symbols-outlined" style="font-size:1.2em;vertical-align:middle;margin-right:0.4em;">self_improvement</span>
+      Йозі
+    </p>
+    <div class="w3-light-grey">
+      <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:90%">90%</div>
     </div>
-  </div>
-  <p class="w3-large w3-center w3-padding-16">Im really good at:</p>
-  <p class="w3-wide"><i class="fa fa-camera"></i>Photography</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:90%">90%</div>
-  </div>
-  <p class="w3-wide"><i class="fa fa-laptop"></i>Web Design</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:85%">85%</div>
-  </div>
-  <p class="w3-wide"><i class="fa fa-photo"></i>Photoshop</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:75%">75%</div>
+    <p class="w3-wide">
+      <span class="iconify" data-icon="mdi:human-male-female-buttocks-outline" style="font-size:1.4em;vertical-align:middle;margin-right:0.4em;"></span>
+      Підтримці тонуса вашої дупці <span aria-label="winking face" title="winking face">😉</span>
+    </p>
+    <div class="w3-light-grey">
+      <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:85%">85%</div>
+    </div>
+    <p class="w3-wide"><i class="fa fa-photo"></i>Ваш варінт</p>
+    <div class="w3-light-grey">
+      <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:75%">75%</div>
+    </div>
   </div>
 </div>
 
@@ -167,53 +208,38 @@ body, html {
 </div>
 
 <!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min">
+<div class="bgimg-2 w3-display-container">
   <div class="w3-display-middle">
     <span class="w3-xxlarge w3-text-white w3-wide">PORTFOLIO</span>
   </div>
 </div>
 
-<!-- Container (Portfolio Section) -->
-<div class="w3-content w3-container w3-padding-64" id="portfolio">
-  <h3 class="w3-center">MY WORK</h3>
-  <p class="w3-center"><em>Here are some of my latest lorem work ipsum tipsum.<br> Click on the images to make them bigger</em></p><br>
-
-  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+<!-- Container (Testimonials Section) -->
+<div class="w3-content w3-container w3-padding-64" id="testimonials">
+  <h3 class="w3-center">Відгуки</h3>
+  <p class="w3-center"><em>Що кажуть мої учні та клієнти</em></p><br>
   <div class="w3-row-padding w3-center">
-    <div class="w3-col m3">
-      <img src="/w3images/p1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The mist over the mountains">
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-card w3-padding-large">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Avatar" style="width:80px;border-radius:50%;margin-bottom:12px;">
+        <p class="w3-large w3-margin-bottom">"Оленка — найкращий тренер! Йога з нею — це завжди гарний настрій і легкість у тілі."</p>
+        <p><b>Марія, Бремен</b></p>
+      </div>
     </div>
-
-    <div class="w3-col m3">
-      <img src="/w3images/p2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Coffee beans">
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-card w3-padding-large">
+        <img src="Pictures/Anton.jpg" alt="Avatar" style="width:80px;border-radius:50%;margin-bottom:12px;">
+        <p class="w3-large w3-margin-bottom">"Після занять у Оленки я відчув нові ягоди в своїх ягодицях :)))"</p>
+        <p><b>Антон, не Бремен</b></p>
+      </div>
     </div>
-
-    <div class="w3-col m3">
-      <img src="/w3images/p3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Bear closeup">
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-card w3-padding-large">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Avatar" style="width:80px;border-radius:50%;margin-bottom:12px;">
+        <p class="w3-large w3-margin-bottom">"Заняття проходять у теплій атмосфері, завжди з посмішкою. Дякую за натхнення!"</p>
+        <p><b>Ірина, Бремен</b></p>
+      </div>
     </div>
-
-    <div class="w3-col m3">
-      <img src="/w3images/p4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quiet ocean">
-    </div>
-  </div>
-
-  <div class="w3-row-padding w3-center w3-section">
-    <div class="w3-col m3">
-      <img src="/w3images/p5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The mist">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="/w3images/p6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="My beloved typewriter">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="/w3images/p7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Empty ghost train">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="/w3images/p8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Sailing">
-    </div>
-    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD MORE</button>
   </div>
 </div>
 
@@ -227,7 +253,7 @@ body, html {
 </div>
 
 <!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 w3-display-container w3-opacity-min">
+<div class="bgimg-3 w3-display-container">
   <div class="w3-display-middle">
      <span class="w3-xxlarge w3-text-white w3-wide">CONTACT</span>
   </div>
@@ -244,7 +270,7 @@ body, html {
     </div>
     <div class="w3-col m8 w3-panel">
       <div class="w3-large w3-margin-bottom">
-        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Chicago, US<br>
+        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Bremen<br>
         <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +00 151515<br>
         <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mail@mail.com<br>
       </div>
@@ -278,7 +304,9 @@ body, html {
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="Antonio" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="Antonio" target="_blank" class="w3-hover-text-green">Antonio</a>
+    <img src="Pictures/Batmen_logo.png" alt="Batmen logo" style="height: 1.5em; vertical-align: middle; margin-left: 0.5em; border-radius: 0.2em; box-shadow: 0 1px 4px rgba(0,0,0,0.12);">
+  </p>
 </footer>
  
 <script>
