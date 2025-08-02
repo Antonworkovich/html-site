@@ -102,6 +102,66 @@ body, html {
     max-width: 98vw;
   }
 }
+
+/* Sidebar Drawer for Lesson Rules and Signup */
+#lessonSidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: -2px 0 16px rgba(0,0,0,0.18);
+  overflow-x: hidden;
+  transition: 0.4s;
+  padding-top: 60px;
+  max-width: 400px;
+}
+#lessonSidebar .closebtn {
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  font-size: 32px;
+  color: #222;
+  cursor: pointer;
+}
+#lessonSidebar h3 {
+  margin-top: 0;
+  text-align: center;
+}
+#lessonSidebar form {
+  margin-top: 24px;
+}
+#lessonSidebar input, #lessonSidebar textarea {
+  width: 90%;
+  margin: 8px 0;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+#lessonSidebar button {
+  margin-top: 12px;
+  width: 92%;
+}
+@media (max-width: 600px) {
+  #lessonSidebar { max-width: 100vw; }
+}
+#openSidebarBtn {
+  position: fixed;
+  top: 120px;
+  right: 0;
+  z-index: 9998;
+  background: #222;
+  color: #fff;
+  border-radius: 8px 0 0 8px;
+  padding: 12px 18px;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: -2px 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s;
+}
+#openSidebarBtn:hover { background: #444; }
 </style>
 </head>
 <body>
@@ -154,7 +214,7 @@ body, html {
 <div class="about-bg-parallax" id="about">
   <div class="about-content">
     <h3 class="w3-center">Про мене</h3>
-    <p class="w3-center"><em>I love photography</em></p>
+    <p class="w3-center"><em>I love </em></p>
     <p>Я - Оленка, викладачка йоги в чудовому місті Бремен. Колись я вирушила до Індії шукати себе, а знайшла ще й дзен (і кілька дуже милих мавпочок). Вивчаю людину не лише ззовні, а й зсередини: тіло, душа, настрій, навіть почуття гумору — усе важливо! </p>
     <div class="w3-row">
       <div class="w3-col m6 w3-center w3-padding-large">
@@ -181,7 +241,7 @@ body, html {
     <div class="w3-light-grey">
       <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:85%">85%</div>
     </div>
-    <p class="w3-wide"><i class="fa fa-photo"></i>Ваш варінт</p>
+    <p class="w3-wide"><i class="fa fa-photo"></i>Ваш варіант</p>
     <div class="w3-light-grey">
       <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:75%">75%</div>
     </div>
@@ -214,6 +274,56 @@ body, html {
   </div>
 </div>
 
+<!-- Google Calendar Block (Class Schedule) -->
+<div class="w3-content w3-container w3-padding-64" id="calendar">
+  <h3 class="w3-center">Розклад занять</h3>
+  <p class="w3-center"><em>Додавайте заняття до свого Google Календаря!</em></p>
+  <div style="display: flex; justify-content: center;">
+    <iframe src="https://calendar.google.com/calendar/embed?src=anton.workovich%40gmail.com&ctz=Europe%2FBerlin" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+  </div>
+  <p class="w3-center" style="font-size:0.95em;color:#888;">* Щоб змінити розклад, відредагуйте свій Google Календар. <br>Використовується календар: <code>anton.workovich@gmail.com</code></p>
+</div>
+
+<!-- PDF Invoice Generator Button -->
+<div class="w3-content w3-container w3-padding-32" id="invoice">
+  <h3 class="w3-center">Завантажити інвойс для оплати</h3>
+  <div style="display: flex; justify-content: center;">
+    <button class="w3-button w3-black w3-large" onclick="generateInvoice()">
+      <span class="material-symbols-outlined" style="vertical-align:middle;">description</span>
+      Завантажити PDF інвойс
+    </button>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+function generateInvoice() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  doc.setFont('helvetica');
+  doc.setFontSize(18);
+  doc.text('RECHNUNG', 105, 20, { align: 'center' });
+  doc.setFontSize(11);
+  // Ліва колонка з реквізитами
+  doc.text('Olena Zahorodniuk', 20, 35);
+  doc.text('Im Ellener Feld 11', 20, 41);
+  doc.text('28327 Bremen', 20, 47);
+  doc.textWithLink('E-Mail: elena.zagorodniuk28@gmail.com', 20, 53, { url: 'mailto:elena.zagorodniuk28@gmail.com' });
+  doc.text('Telefon: 015221354731', 20, 59);
+  doc.text('Steuernummer: 6028223887', 20, 65);
+  doc.text('IBAN: DE16 2907 0024 0018 2238 00', 20, 71);
+  doc.text('BIC: DEUTDEDBBRE', 20, 77);
+  // Основна частина інвойсу (праворуч)
+  doc.setFontSize(12);
+  doc.text('Empfänger: [Kundenname]', 120, 47);
+  doc.text('Datum: 26.07.2025', 120, 53);
+  doc.text('Beschreibung: Yoga-Unterricht', 120, 59);
+  doc.text('Zu zahlender Betrag: 100 EUR', 120, 65);
+  doc.text('Zahlungsdetails: ...', 120, 71);
+  doc.text('Vielen Dank für Ihr Vertrauen і die gemeinsame Praxis!', 20, 100);
+  doc.save('rechnung.pdf');
+}
+</script>
+
 <!-- Container (Testimonials Section) -->
 <div class="w3-content w3-container w3-padding-64" id="testimonials">
   <h3 class="w3-center">Відгуки</h3>
@@ -240,15 +350,6 @@ body, html {
         <p><b>Ірина, Бремен</b></p>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Modal for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
   </div>
 </div>
 
@@ -338,7 +439,51 @@ function toggleFunction() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
+
+/* Sidebar Drawer functions */
+function openLessonSidebar() {
+  document.getElementById("lessonSidebar").style.width = "90vw";
+  if(window.innerWidth > 600) document.getElementById("lessonSidebar").style.width = "400px";
+}
+function closeLessonSidebar() {
+  document.getElementById("lessonSidebar").style.width = "0";
+}
+function submitLessonForm(e) {
+  e.preventDefault();
+  document.getElementById('lessonFormMsg').style.display = 'block';
+  setTimeout(()=>{
+    document.getElementById('lessonFormMsg').style.display = 'none';
+    closeLessonSidebar();
+    document.getElementById('lessonSignupForm').reset();
+  }, 2000);
+}
 </script>
+
+<!-- Button to open sidebar -->
+<div id="openSidebarBtn" onclick="openLessonSidebar()">
+  <span class="material-symbols-outlined" style="vertical-align:middle;">menu_book</span> Запис на урок
+</div>
+
+<!-- Sidebar Drawer -->
+<div id="lessonSidebar">
+  <span class="closebtn" onclick="closeLessonSidebar()">&times;</span>
+  <h3>Правила запису на урок</h3>
+  <ul style="padding-left: 24px; text-align:left;">
+    <li>Запис обовʼязковий не пізніше ніж за 2 години до початку.</li>
+    <li>Відміна — не пізніше ніж за 1 годину до заняття.</li>
+    <li>Якщо не можете прийти — попередьте, будь ласка!</li>
+    <li>Вказуйте актуальний номер телефону для звʼязку.</li>
+  </ul>
+  <form id="lessonSignupForm" onsubmit="submitLessonForm(event)">
+    <h4 style="margin-bottom:8px;">Записатися на урок</h4>
+    <input type="text" name="name" placeholder="Ваше імʼя" required>
+    <input type="tel" name="phone" placeholder="Телефон" required>
+    <input type="email" name="email" placeholder="E-mail (необовʼязково)">
+    <textarea name="comment" rows="2" placeholder="Коментар (необовʼязково)"></textarea>
+    <button class="w3-button w3-black" type="submit">Записатися</button>
+    <div id="lessonFormMsg" style="margin-top:8px;color:green;display:none;">Дякуємо за запис!</div>
+  </form>
+</div>
 
 </body>
 </html>
